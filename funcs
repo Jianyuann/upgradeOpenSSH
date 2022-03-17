@@ -208,6 +208,7 @@ upgradeOpenSSH(){
             chkconfig sshd on
             systemctl daemon-reload
             systemctl start sshd
+	    systemctl enable sshd.socket
         fi
         sleep 5
         checkServerPort 22 sshd
