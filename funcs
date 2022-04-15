@@ -35,7 +35,7 @@ color(){
 }
 
 centosVersion(){
-    centos_v=$(cat /etc/centos-release |awk -F'release ' '{print $2}'|awk -F. '{print $1}')
+    centos_v=$(cat /etc/os-release |awk -F'release ' '{print $2}'|awk -F. '{print $1}')
 }
 
 isRoot(){
@@ -241,8 +241,8 @@ chooseVersion(){
     ssh -V
     isRoot
     color white "================================================="
-    color green "    1. openssh8.9p1 with openssl1.1.1n"
-    color green "    2. openssh8.9p1 with openssl3.0.2"
+    color green "    1. openssh9.0p1 with openssl1.1.1n"
+    color green "    2. openssh9.0p1 with openssl3.0.2"
     color white "    q/quit to quit this menu"
     color white "================================================="
     read -p "choose the order number to upgrade: " orderNumber
@@ -250,12 +250,12 @@ chooseVersion(){
     case $orderNumber in 
     1)
         expectSSLVersion=1.1.1n
-        expectSSHVersion=8.9p1
+        expectSSHVersion=9.0p1
         upgrade
     ;;
     2)
         expectSSLVersion=3.0.2
-        expectSSHVersion=8.9p1
+        expectSSHVersion=9.0p1
         upgrade
     ;;
     q|quit)
